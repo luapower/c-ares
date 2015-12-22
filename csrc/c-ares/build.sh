@@ -46,10 +46,9 @@ ares_writev.c
 bitncmp.c
 inet_net_pton.c
 inet_ntop.c
-windows_port.c
 "
 cd src || exit 1
-${X}gcc -c -O2 -Wall -DCARES_STATICLIB $C $files -I.
-${X}gcc *.o -shared -o ../../../bin/$P/$D $L -lwsock32
+${X}gcc -c -O2 -Wall -DCARES_BUILDING_LIBRARY -DCARES_SYMBOL_HIDING $C $files -I.
+${X}gcc *.o -shared -o ../../../bin/$P/$D $L
 ${X}ar rcs ../../../bin/$P/$A *.o
 rm *.o
